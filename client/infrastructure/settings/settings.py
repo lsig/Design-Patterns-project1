@@ -12,6 +12,7 @@ class LoggingType(ContainerSettingEnum):
     FILE = 'file'
 
 
+
 class Environment(ContainerSettingEnum):
     DEV = 'development'
     STAGING = 'staging'
