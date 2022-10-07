@@ -44,6 +44,8 @@ class LoggerConfigBuilder:
         self.__logger = LoggerConfig()
 
     def build(self) -> LoggerConfig:
-        return self.__logger
+        logger = self.__logger
+        self._clear()
+        return logger
 
   
