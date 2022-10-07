@@ -14,7 +14,7 @@ class LoggerConfigBuilder:
         self.__logger.sink = sink
 
     def with_file_sink(self, file_path: str) -> 'LoggerConfigBuilder':
-        self.__logger.sink = FileSink()
+        self.__logger.sink = FileSink(file_path)
 
     def with_console_sink(self) -> 'LoggerConfigBuilder':
         self.__logger.sink = ConsoleSink()
@@ -32,4 +32,7 @@ class LoggerConfigBuilder:
         self.__logger = LoggerConfig()
 
     def build(self) -> LoggerConfig:
-        raise NotImplementedError()
+        self._clear()
+        return self.__logger
+
+  
