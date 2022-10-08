@@ -1,4 +1,4 @@
 ./venv/
-./log.txt
-./orders.txt
+log.txt
+orders.txt
 __pycache__
