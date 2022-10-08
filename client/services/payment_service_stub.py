@@ -1,8 +1,9 @@
 from client.infrastructure.logging.I_logger import ILogger
 from client.models.payment import Payment
+from client.services.I_payment_service import IPaymentService
 
 
-class PaymentServiceStub():
+class PaymentServiceStub(IPaymentService):
     def __init__(self, should_succeed: bool, logger: ILogger):
         self._logger = logger
         self._should_succeed = should_succeed

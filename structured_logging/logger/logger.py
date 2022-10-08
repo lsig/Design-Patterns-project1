@@ -13,7 +13,7 @@ class Logger:
 
         self.__logger_config.processor(kwargs['data'])
         
-        logging_command = LoggingCommand(kwargs['sink'], kwargs['data'])
+        logging_command = LoggingCommand(sink=self.__logger_config.sink, data=kwargs['data'])
         if self.__logger_config.is_async:
             self.__logging_queue.add(logging_command)
 
