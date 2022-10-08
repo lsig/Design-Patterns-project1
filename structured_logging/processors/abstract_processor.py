@@ -3,7 +3,7 @@ from structured_logging.processors.I_processor import IProcessor
 
 
 class AbstractProcessor(IProcessor):
-    _next: 'AbstractProcessor'
+    _next: IProcessor = None
 
     def set_next(self, processor: IProcessor):
         self._next = processor

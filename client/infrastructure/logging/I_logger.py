@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from client.models.payment import Payment
+
 
 class ILogger(ABC):
     @abstractmethod
@@ -12,4 +14,8 @@ class ILogger(ABC):
 
     @abstractmethod
     def info(self, message: str):
+        pass
+
+    @abstractmethod
+    def payment(self, payment: Payment):
         pass

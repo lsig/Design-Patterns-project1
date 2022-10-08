@@ -24,7 +24,7 @@ class Container(containers.DeclarativeContainer):
                                     logger=__logger_provider)
 
     __order_repository_provider = providers.Singleton(OrderRepository, 
-                                    file_path=config.order_file_path)
+                                    file_name=config.order_file_path)
 
     order_service = providers.Singleton(OrderService,
                                     payment_service=__payment_provider,

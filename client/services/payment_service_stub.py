@@ -12,6 +12,7 @@ class PaymentServiceStub(IPaymentService):
         self._logger.info("Payment started")
 
         if self._should_succeed:
+            self._logger.payment(payment)
             self._logger.info(f"Payment finished")
         else:
             raise Exception("Payment failed")

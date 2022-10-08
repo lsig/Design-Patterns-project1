@@ -11,7 +11,7 @@ class Logger:
 
     def log(self, **kwargs: Iterable[Any]):
 
-        self.__logger_config.processor(kwargs['data'])
+        self.__logger_config.processor.handle(kwargs['data'])
         
         logging_command = LoggingCommand(sink=self.__logger_config.sink, data=kwargs['data'])
         if self.__logger_config.is_async:

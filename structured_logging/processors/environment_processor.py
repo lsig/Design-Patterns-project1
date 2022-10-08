@@ -7,8 +7,7 @@ class EnvironmentProcessor(AbstractProcessor):
     def __init__(self, environment: Environment) -> None:
         self._environment = environment
     
-    _next: AbstractProcessor
 
     def handle(self, data: dict):
-        data['environment']: Environment = self._environment
+        data['environment']: str = self._environment.name
         super().handle(data)

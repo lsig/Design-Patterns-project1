@@ -11,9 +11,6 @@ from structured_logging.processors.null_processor import NullProcessor
 class LoggerConfigBuilder:
     def __init__(self):
         self._clear()
-        self.with_console_sink().add_processor(NullProcessor())
-        self.__logger.is_async = False
-        self.__logger.async_wait_delay_in_seconds = 0
 
     def with_custom_sink(self, sink: ISink) -> 'LoggerConfigBuilder':
         self.__logger.sink = sink
@@ -37,11 +34,16 @@ class LoggerConfigBuilder:
         return self
 
     def add_processor(self, processor: IProcessor) -> 'LoggerConfigBuilder':
+        processor.set_next(self.__logger.processor)
         self.__logger.processor = processor
         return self
 
     def _clear(self):
-        self.__logger = LoggerConfig()
+        self.__logger = LoggerConfig(
+            sink=ConsoleSink(), 
+            processor=NullProcessor(), 
+            is_async=False, 
+            async_wait_delay_in_seconds=0)
 
     def build(self) -> LoggerConfig:
         logger = self.__logger
