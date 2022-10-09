@@ -36,6 +36,7 @@ class LoggerConfigBuilder:
     def add_processor(self, processor: IProcessor) -> 'LoggerConfigBuilder':
         processor.set_next(self.__logger.processor)
         self.__logger.processor = processor
+
         return self
 
     def _clear(self):

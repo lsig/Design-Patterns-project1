@@ -12,7 +12,7 @@ class ClientLogger(ILogger):
         data = dict()
         data['message'] = message
         data['level'] = 'error'
-        data['exception'] = exception
+        data['exception'] = exception.__dict__
 
         self.__external_logger.log(data=data)
         
@@ -20,7 +20,7 @@ class ClientLogger(ILogger):
         data = dict()
         data['message'] = message
         data['level'] = 'warning'
-        data['exception'] = exception
+        data['exception'] = exception.__dict__
 
         self.__external_logger.log(data=data)
 

@@ -8,12 +8,6 @@ class Container(containers.DeclarativeContainer):
 
         __queue_provider = providers.Singleton(Queue, config=config)
 
-        # __logger_config_provider = providers.Singleton(LoggerConfig,
-        #                         sink=config.sink,
-        #                         processor=config.processor,
-        #                         is_async=config.is_async,
-        #                         async_wait_delay_in_seconds=config.async_wait_delay_in_seconds)
-
         logger = providers.Singleton(Logger,
                                 logger_config=config,
                                 logging_queue=__queue_provider)

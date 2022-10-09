@@ -6,7 +6,7 @@ from structured_logging.processors.timestamp_processor import TimestampProcessor
 
 
 def create_logger_config(settings: Settings) -> LoggerConfig:
-        builder = LoggerConfigBuilder().add_environment(settings.environment).add_processor(TimestampProcessor()).add_processor(MaskingProcessor(masks=['card_number', 'security_code']))
+        builder = LoggerConfigBuilder().add_environment(settings.environment).add_processor(TimestampProcessor()).add_processor(MaskingProcessor(masks=["card_number", "security_code"]))
 
         if settings.logging_is_async:
             builder.as_async(settings.logging_async_delay)
@@ -17,9 +17,4 @@ def create_logger_config(settings: Settings) -> LoggerConfig:
         elif settings.logging_type == LoggingType.FILE:
             builder.with_file_sink(settings.logging_file_path)
 
-        config = builder.build()
-
-        #TODO remove test
-        #assert(isinstance(config, LoggerConfig))
-
-        return config
+        return builder.build()
