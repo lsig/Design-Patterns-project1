@@ -1,3 +1,4 @@
+from typing import Any, Iterable
 from client.infrastructure.logging.I_logger import ILogger
 from client.models.payment import Payment
 from structured_logging.logger.logger import Logger
@@ -12,7 +13,7 @@ class ClientLogger(ILogger):
         data = dict()
         data['message'] = message
         data['level'] = 'error'
-        data['exception'] = exception.__dict__
+        data['exception'] = str(exception)
 
         self.__external_logger.log(data=data)
         
@@ -20,7 +21,7 @@ class ClientLogger(ILogger):
         data = dict()
         data['message'] = message
         data['level'] = 'warning'
-        data['exception'] = exception.__dict__
+        data['exception'] = str(exception)
 
         self.__external_logger.log(data=data)
 
@@ -31,6 +32,10 @@ class ClientLogger(ILogger):
         data['level'] = 'info'
 
         self.__external_logger.log(data=data)
+        
+
+    def log(self, **kwargs: Iterable[Any]):
+        self.__external_logger.log(kwargs)
     
 
     def payment(self, payment: Payment):
